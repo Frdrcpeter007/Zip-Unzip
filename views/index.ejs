@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+	<title>Zip file</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<h1>Uploader les fichiers</h1>
+				<input type="file" name="myImage" onchange="uploadFile(this, ['png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])">
+				<br><br>
+				<div id="allFile">
+		
+				</div>
+				<br><br><br>
+				<button class="btn" onclick="zip()">Zipper ces éléments</button>
+				<br>
+			</div><br><br>
+
+			<hr><br><br>
+			<div class="col-md-3">
+				<h1>Uploader le fichier à dezipper</h1>
+				<input type="file" name="myImage" onchange="dezippe(this, ['zip', 'ZIP'])">
+			</div>
+		</div>
+	</div>
+
+	<script src="/javascripts/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="/javascripts/externals.js"></script>
+</body>
+
+</html>
