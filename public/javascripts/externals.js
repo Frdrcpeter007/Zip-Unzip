@@ -19,7 +19,6 @@ function uploadFile(files, extensions) {
         // On utilise toLowerCase() pour éviter les extensions en majuscules
         imgType = imgType[imgType.length - 1].toLowerCase();
 
-        if (allowedTypes.indexOf(imgType) != -1) {
 
             //LES VARIABLES
             var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
@@ -56,8 +55,13 @@ function uploadFile(files, extensions) {
                         console.log(data);
                         if (data.state) {
                             tempImage.push({ location: `./public/${data.location}`, name: data.name });
-                            $("#allFile").append(`<img src="/${data.location}" class="responsive-img" style="width: 250px;">`);
-
+                            if (allowedTypes.indexOf(imgType) != -1) {
+                                $("#allFile").append(`<img src="/${data.location}" class="responsive-img" style="width: 250px;">`);
+                            }else {
+                                $("#allFile").append(`
+                                    <img src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/512/System-pictures-icon.png" class="responsive-img" style="width: 250px;">
+                                `)
+                            }
                             window.localStorage.setItem("files", JSON.stringify(tempImage))
                         } else {
                             alert(data.msg)
@@ -65,9 +69,7 @@ function uploadFile(files, extensions) {
                     }
                 });
             }
-        } else {
-            alert("Extension du fichier non valide")
-        }
+        
 
     }
 
