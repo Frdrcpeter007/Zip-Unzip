@@ -96,6 +96,7 @@ router.post("/dezip", async (req, res) => {
 	var destination = `${req.body.name.split(".")[0]}`;
 	await extract(`${req.body.zip}`, { dir: path.join(__dirname, `public/dezip/${destination}`)});
 
-	res.status(200).send({status: true, message: "Fichier decompressé..."})
+	res.status(200).send({status: true, message: "Fin de la decompression..."})
 })
+
 module.exports = router;
